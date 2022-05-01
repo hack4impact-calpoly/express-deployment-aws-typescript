@@ -1,6 +1,6 @@
 {
-  "name": "express-deployment-aws",
-  "version": "0.1.0",
+  "name": "express-deployment-aws-typescript",
+  "version": "0.0.9",
   "license": "MIT",
-  "repository": "github:Zimboboys/express-deployment-aws"
+  "repository": "github:hack4impact-calpoly/express-deployment-aws-typescript"
 }

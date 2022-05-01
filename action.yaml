@@ -35,6 +35,7 @@ runs:
         cp ${{ github.action_path }}/lambda.js .
         cp ${{ github.action_path }}/webpack.config.js .
         npm install webpack@^5.27.1 webpack-cli@^4.5.0 source-map-support@^0.5.19 dotenv-webpack@^7.0.2 @vendia/serverless-express@^4.3.4
+        npm install ts-loader
         npx webpack-cli
       shell: bash
 
