@@ -21,23 +21,30 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Install backend dependencies
+    - name: Install project dependencies
       working-directory: backend
-      run: |
-        npm install --production
-        npm install ts-loader
+      run: npm install --production
       shell: bash
 
     - name: Declare env variables
       run: printenv > .env # hacky, but should hold
       shell: bash
 
+    - name: Copy action configuration files
+      run: cp ${{ github.action_path }}/lambda.js  ${{ github.action_path }}/webpack.config.js ${{ github.action_path }}/sam-template.yaml .
+      shell: bash
+
+    - name: Install ts-loader
+      working-directory: backend
+      run: npm install ts-loader
+      shell: bash
+
+    - name: Install webpack dependancies
+      run: npm install webpack@^5.27.1 webpack-cli@^4.5.0 source-map-support@^0.5.19 dotenv-webpack@^7.0.2 @vendia/serverless-express@^4.3.4
+      shell: bash
+
     - name: Compile backend
-      run: |
-        cp ${{ github.action_path }}/lambda.js .
-        cp ${{ github.action_path }}/webpack.config.js .
-        npm install webpack@^5.27.1 webpack-cli@^4.5.0 source-map-support@^0.5.19 dotenv-webpack@^7.0.2 @vendia/serverless-express@^4.3.4
-        npx webpack-cli
+      run: npx webpack-cli
       shell: bash
 
     - name: Create bucket
@@ -45,9 +52,7 @@ runs:
       shell: bash
 
     - name: Package backend
-      run: |
-        cp ${{ github.action_path }}/sam-template.yaml .
-        aws cloudformation package --template ./sam-template.yaml --s3-bucket ${{ inputs.s3-bucket }} --output-template sam-template.packaged.yaml
+      run: aws cloudformation package --template ./sam-template.yaml --s3-bucket ${{ inputs.s3-bucket }} --output-template sam-template.packaged.yaml
       shell: bash
 
     - name: Deploy backend
