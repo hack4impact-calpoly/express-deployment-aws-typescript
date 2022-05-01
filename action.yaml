@@ -35,7 +35,6 @@ runs:
       shell: bash
 
     - name: Install ts-loader
-      working-directory: backend
       run: npm install ts-loader
       shell: bash
 
