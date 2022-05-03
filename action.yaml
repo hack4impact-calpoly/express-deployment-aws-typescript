@@ -23,7 +23,7 @@ runs:
   steps:
     - name: Install project dependencies
       working-directory: backend
-      run: npm install --production
+      run: npm install
       shell: bash
 
     - name: Declare env variables
