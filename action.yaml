@@ -27,7 +27,7 @@ runs:
       shell: bash
 
     - name: Declare env variables
-      run: printenv > .env # hacky, but should hold
+      run: printenv > ./backend/.env # hacky, but should hold
       shell: bash
 
     - name: Copy action configuration files
