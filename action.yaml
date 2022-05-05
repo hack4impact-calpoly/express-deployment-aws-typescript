@@ -39,7 +39,7 @@ runs:
       shell: bash
 
     - name: Install webpack dependancies
-      run: npm install webpack@^5.27.1 webpack-cli@^4.5.0 source-map-support@^0.5.19 dotenv-webpack@^7.0.2 @vendia/serverless-express@^4.3.4
+      run: npm install webpack@^5.27.1 webpack-cli@^4.5.0 source-map-support@^0.5.19 dotenv-webpack@^7.0.2 @vendia/serverless-express@^4.8.0
       shell: bash
 
     - name: Compile backend
