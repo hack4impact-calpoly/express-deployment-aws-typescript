@@ -1,4 +1,4 @@
-name: 'Express Deployment AWS'
+name: 'Express Deployment AWS Typescript'
 description: 'Automatically deploy an Express app to API Gateway/Lambda'
 
 inputs:
@@ -8,10 +8,6 @@ inputs:
   stack-name:
     description: 'Cloud Formation stack name'
     required: true
-  domain:
-    description: 'Domain to deploy to'
-    required: false
-    default: ''
 
 outputs:
   api-url:
@@ -55,7 +51,7 @@ runs:
       shell: bash
 
     - name: Deploy backend
-      run: aws cloudformation deploy --template-file sam-template.packaged.yaml --stack-name ${{ inputs.stack-name }} --capabilities CAPABILITY_IAM --parameter-overrides DomainName=${{ inputs.domain }}
+      run: aws cloudformation deploy --template-file sam-template.packaged.yaml --stack-name ${{ inputs.stack-name }} --capabilities CAPABILITY_IAM
       shell: bash
 
     - id: get-url
