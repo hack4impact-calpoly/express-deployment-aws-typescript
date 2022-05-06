@@ -1,5 +1,5 @@
-name: 'Express Deployment AWS'
-description: 'Automatically deploy an Express app to API Gateway/Lambda'
+name: 'Express Deployment AWS Typescript'
+description: 'Automatically deploy an Express-Typescript app to API Gateway/Lambda'
 
 inputs:
   s3-bucket:
